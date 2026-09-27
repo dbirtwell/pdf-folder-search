@@ -89,7 +89,7 @@ PDF.js and jsPDF are bundled in `lib/`, so the app works offline. Neither versio
 
 ## License
 
-Released under the [MIT License](LICENSE). Copyright (c) 2026 dbirtwell.
+Released under the [MIT License](LICENSE). Copyright (c) 2026 David Birtwell.
 
 In short, you may use, copy, modify, merge, publish, distribute, sublicense and sell copies of this software, provided the copyright notice and permission notice are included in all copies or substantial portions of it. The software is provided **"as is", without warranty of any kind**, and the authors are not liable for any claim, damages or other liability arising from its use. The full text is in [LICENSE](LICENSE).
 
