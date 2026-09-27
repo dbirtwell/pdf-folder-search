@@ -1,0 +1,33 @@
+# Dependencies (recreated with `npm install`)
+node_modules/
+
+# Build output (recreated with `npm run dist:*`)
+dist/
+out/
+
+# Reports saved by the app while testing
+pdf-search-report-*.txt
+pdf-search-report-*.pdf
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment and secrets (e.g. code-signing credentials)
+.env
+.env.*
+*.pem
+*.p12
+*.pfx
+
+# Editor and AI-tool settings
+.vscode/
+.idea/
+.qodo/
+*.swp
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini

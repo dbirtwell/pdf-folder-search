@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; worker-src 'self' blob:; connect-src 'self' blob: data:; object-src 'none'">
+  <title>PDF Folder Search</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="lib/jspdf.umd.min.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>PDF Folder Search</h1>
+      <p class="subtitle">Search every PDF in a folder for a word or phrase. Files are read locally in your browser and never uploaded.</p>
+    </header>
+
+    <section class="panel">
+      <div class="field">
+        <label for="folderInput">Folder</label>
+        <div class="folder-row">
+          <button type="button" id="chooseBtn" class="button secondary">Choose folder…</button>
+          <input type="file" id="folderInput" webkitdirectory directory multiple hidden>
+          <span id="folderInfo" class="muted">No folder selected</span>
+        </div>
+      </div>
+
+      <div class="field" id="basePathField">
+        <label for="basePathInput">Folder location on disk <span class="muted small">(optional)</span></label>
+        <input type="text" id="basePathInput" placeholder="e.g. C:\Users\Dave\Documents  or  /home/dave/docs" autocomplete="off">
+        <div class="muted small">Browsers don't reveal a folder's full path. If you type it here, it's added to the start of each file path in the results and reports.</div>
+      </div>
+
+      <div class="field">
+        <label for="searchInput">Word or phrase</label>
+        <input type="text" id="searchInput" placeholder="e.g. purchase agreement" autocomplete="off">
+      </div>
+
+      <div class="options">
+        <label><input type="checkbox" id="optSubdirs" checked> Include subdirectories</label>
+        <label><input type="checkbox" id="optCase"> Match case</label>
+        <label><input type="checkbox" id="optWhole"> Whole word / phrase only</label>
+      </div>
+
+      <div class="actions">
+        <button id="searchBtn" class="button primary" disabled>Search</button>
+        <button id="cancelBtn" class="button secondary" hidden>Cancel</button>
+      </div>
+
+      <div id="progressWrap" class="progress-wrap" hidden>
+        <progress id="progressBar" value="0" max="1"></progress>
+        <div id="progressText" class="muted small"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="results-header">
+        <h2>Matches <span id="hitCount" class="badge">0</span></h2>
+        <div class="actions">
+          <button id="txtBtn" class="button secondary" disabled>Save text report</button>
+          <button id="pdfBtn" class="button secondary" disabled>Save PDF report</button>
+        </div>
+      </div>
+      <div id="summary" class="muted small"></div>
+      <div id="reportStatus" class="muted small" hidden></div>
+      <ul id="hitList" class="hit-list">
+        <li class="empty">No results yet.</li>
+      </ul>
+      <details id="errorsWrap" class="errors" hidden>
+        <summary>Files that could not be read (<span id="errorCount">0</span>)</summary>
+        <ul id="errorList"></ul>
+      </details>
+    </section>
+  </main>
+</body>
+</html>

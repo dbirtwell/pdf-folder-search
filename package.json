@@ -1,0 +1,54 @@
+{
+  "name": "pdf-folder-search",
+  "productName": "PDF Folder Search",
+  "version": "1.0.0",
+  "description": "Search every PDF in a folder for a word or phrase.",
+  "author": "David Birtwell",
+  "license": "MIT",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "node scripts/start.js",
+    "dist": "electron-builder",
+    "dist:linux": "electron-builder --linux",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac"
+  },
+  "build": {
+    "appId": "com.dbirtwell.pdffoldersearch",
+    "files": [
+      "index.html",
+      "app.js",
+      "search.js",
+      "style.css",
+      "lib/**",
+      "electron/**",
+      "build/icon.png",
+      "LICENSE"
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility",
+      "icon": "build/icon.png",
+      "syncDesktopName": true
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.productivity"
+    }
+  },
+  "devDependencies": {
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3"
+  },
+  "desktopName": "pdf-folder-search.desktop"
+}
